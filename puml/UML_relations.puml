@@ -1,0 +1,84 @@
+@startuml
+
+class A
+class B
+class C
+class D
+class E
+class F
+
+' 1. Inheritance/Generalization (Обобщение)
+A <|-- B
+note on link
+  <b>Наследование</b>
+  • B является A
+  • Б сплошная линия
+  • Белый треугольник
+  • От потомка к родителю
+end note
+
+' 2. Realization/Implementation (Реализация)  
+interface I
+C ..|> I
+note on link
+  <b>Реализация интерфейса</b>
+  • C реализует I
+  • Пунктирная линия
+  • Белый треугольник
+end note
+
+' 3. Association (Ассоциация)
+D -- E
+note on link
+  <b>Ассоциация</b>
+  • Связь между классами
+  • Оба знают друг о друге
+  • Мультипликативность: 1..*
+end note
+
+' 4. Directed Association (Направленная ассоциация)
+D --> F
+note on link
+  <b>Направленная ассоциация</b>
+  • D знает о F
+  • F не знает о D
+  • Навигация в одну сторону
+end note
+
+' 5. Aggregation (Агрегация)
+class Whole
+class Part
+Whole o-- Part
+note on link
+  <b>Агрегация</b>
+  • "Имеет" (has-a)
+  • Слабый ownership
+  • Часть может жить без целого
+  • Пустой ромб на стороне целого
+end note
+
+' 6. Composition (Композиция)
+class Container
+class Element
+Container *-- Element
+note on link
+  <b>Композиция</b>
+  • "Состоит из" (part-of)
+  • Сильный ownership
+  • Часть не может жить без целого
+  • Заполненный ромб
+end note
+
+' 7. Dependency (Зависимость)
+class Client
+class Service
+Client ..> Service
+note on link
+  <b>Зависимость</b>
+  • Использование без хранения
+  • Параметры методов
+  • Возвращаемые значения
+  • Временная связь
+end note
+
+@enduml
